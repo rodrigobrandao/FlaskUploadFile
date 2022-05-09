@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <title>Upload Files</title>
+</head>
+<body>
+
+    <div class="container">
+
+    <h2>File Upload</h2>
+    <form method="POST" enctype="multipart/form-data">
+      
+      <div class="form-group mb-3">
+        <label for="Release">Release</label>
+        <select class="form-select" name="dropdownRelease">
+          <option value="1">Release 01</option>
+        </select>   
+      </div>
+
+      <div class="form-group mb-3">
+      <label for="txtTitulo">Titulo</label>
+       <input type="text" name="txtTitulo" class="form-control" placeholder="Título da entrega">
+       <small id="emailHelp" class="form-text text-muted">Deve representar a entrega com os benefícios que o usuário receberá!!</small>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="dropdownArea">Area</label>
+        <select class="form-select" name="dropdownArea">
+          <option value="Customer Success">Customer Success</option>
+          <option value="Cartões">Cartões</option>
+          <option value="Investimento">Investimento</option>
+          <option value="Aba Vendas">Aba Vendas</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="dropdownTime">Time</label>
+        <select class="form-select" name="dropdownTime">
+          <option value="Time A">Time A</option>
+          <option value="Time B">Time B</option>
+          <option value="Time C">Time C</option>
+          <option value="Time D">Time D</option>
+        </select>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="txtDescricao">Descrição</label>
+        <textarea class="form-control" name="txtDescricao" rows="3"></textarea>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="file01" >Imagem 01</label>
+       <input type="file" name="file01" accept="image/*" class="form-control">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="file02">Imagem 02</label>
+       <input type="file" name="file02" accept="image/*" class="form-control">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+      
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <h2>Upload success!!!</h2> 
+     <ul class=flashes>
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+      </ul>
+      <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '/release/1'">Ver detalhes</button>
+    {% endif %}
+  {% endwith %}
+
+    </div>
+
+  </body>
+</html>
